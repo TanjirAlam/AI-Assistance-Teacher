@@ -561,6 +561,8 @@ body {
     padding: 12px;
     border-radius: 10px;
     text-align: left;
+    overflow: scroll;
+    max-height: 250px;
   }
   
   .practice-box ul {

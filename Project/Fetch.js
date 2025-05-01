@@ -11,12 +11,12 @@ async function submitDoubt() {
     solutionBox.innerHTML = "<p>Loading...</p>";
 
     try {
-        const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=YAIzaSyDIrLNvDcCSCwWtJvfGUrdu0Biv2WyCHVI", {
+        const response = await fetch("http://localhost:8000/ask-doubt", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt: input }),
+            body: JSON.stringify({ question: input }),
         });
 
         if (!response.ok) {
@@ -25,7 +25,8 @@ async function submitDoubt() {
         }
 
         const data = await response.json();
-        const reply = data.response;
+        console.log("Answer: ",data)
+        const reply = data?.answer;
         solutionBox.innerHTML = `<p>${reply}</p>`;
 
     } catch (error) {
